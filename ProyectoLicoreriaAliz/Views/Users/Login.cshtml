@@ -1,0 +1,30 @@
+﻿@{
+	ViewData["Title"] = "Login";
+	Layout = "_Layout";
+	@model ProyectoLicoreriaAliz.ViewModel.LoginVM;
+}
+
+<div class="container-main w-100 h-100">
+	<form class="col-3" asp-controller="Users" asp-action="Login" method="post">
+		<div class="formLogin w-100 h-100">
+			<h1 class="fw-bold text-center">Login</h1>
+			@if (ViewData["Mensaje"] != null)
+			{
+				<div class="listErrors">
+					<p class="error">@ViewData["Mensaje"]</p>
+				</div>
+			}
+			<fieldset class="form-group">
+				<label class="form-label">Email</label>
+				<input asp-for="email" class="form-control" type="email" required />
+			</fieldset>
+			<fieldset class="form-group">
+				<label class="form-label">Contraseña</label>
+				<input asp-for="password" class="form-control" type="password" required />
+			</fieldset>
+			<button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+		</div>
+	</form>
+</div>
+
+

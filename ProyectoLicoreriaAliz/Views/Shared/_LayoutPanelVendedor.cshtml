@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - ProyectoLicoreriaAliz</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/ProyectoLicoreriaAliz.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+	<main class="main">
+
+		<aside class="menu-slider">
+			
+		</aside>
+
+		<div class="content">
+			
+			<header class="header">
+				
+				<h1 class="text-white m-0">Title</h1>
+
+				<div class="btn-group dropstart">
+
+					<img class="menu-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="/img/user.svg" />
+					
+					<ul class="dropdown-menu">
+
+						<div class="menu">
+							<a href="#">Hola</a>
+							<a href="#">Hola</a>
+							<a href="#">Hola</a>
+							<a href="#">Hola</a>
+						</div>
+
+					</ul>
+
+				</div>
+
+			</header>
+			
+			<div class="container-main">
+				@RenderBody()
+			</div>
+			
+		</div>
+
+	</main>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

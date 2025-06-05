@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - ProyectoLicoreriaAliz</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/ProyectoLicoreriaAliz.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+	<main class="main">
+
+		<aside class="menu-slider-relative position-relative">
+
+			<div class="menu-slider-absolute">
+				
+				<div class="menu-slider-container">
+
+					<div class="w-100 menu-slider-icon-container">
+						<img id="btn-toggle-slider" class="menu-slider-icon" src="/img/menu.svg" alt="Alternate Text" />
+					</div>
+
+					<div class="menu-slider-menu-link-container">
+						<div class="menu-slider-menu-link">
+							<img class="menu-icon" src="/img/home.svg" alt="Home Icon" />
+							<a asp-controller="Users" asp-action="Login" class="menu-link">Inicio</a>
+						</div>
+						<div class="menu-slider-menu-link">
+							<img class="menu-icon" src="/img/home.svg" alt="Home Icon" />
+							<a class="menu-link">Inicio</a>
+						</div>
+						<div class="menu-slider-menu-link">
+							<img class="menu-icon" src="/img/home.svg" alt="Home Icon" />
+							<a class="menu-link">Inicio</a>
+						</div>
+						<div class="menu-slider-menu-link">
+							<img class="menu-icon" src="/img/home.svg" alt="Home Icon" />
+							<a class="menu-link">Inicio</a>
+						</div>
+						<div class="menu-slider-menu-link">
+							<img class="menu-icon" src="/img/home.svg" alt="Home Icon" />
+							<a class="menu-link">Inicio</a>
+						</div>
+						<div class="menu-slider-menu-link">
+							<img class="menu-icon" src="/img/home.svg" alt="Home Icon" />
+							<a class="menu-link">Inicio</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</aside>
+
+		<div class="content">
+
+			<header class="header">
+
+				<h1 class="text-white m-0">Title</h1>
+
+				<div class="btn-group dropstart">
+
+					<img class="header-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="/img/user.svg" />
+
+					<ul class="dropdown-menu">
+
+						<div class="header-menu">
+							<a class="header-menu-item" href="#">Hola</a>
+							<a class="header-menu-item" href="#">Hola</a>
+							<a class="header-menu-item" href="#">Hola</a>
+							<a class="header-menu-item" href="#">Hola</a>
+								<a class="header-menu-salir">Salir</a>
+						</div>
+
+					</ul>
+
+				</div>
+
+			</header>
+
+			<div class="container-main">
+				@RenderBody()
+			</div>
+
+		</div>
+
+	</main>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const btnToggle = document.getElementById('btn-toggle-slider');
+			const slider = document.querySelector('.menu-slider-absolute');
+
+			if (btnToggle && slider) {
+				btnToggle.addEventListener('click', function () {
+					slider.classList.toggle('menu-slider-absolute-active');
+				});
+			}
+		});
+	</script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
