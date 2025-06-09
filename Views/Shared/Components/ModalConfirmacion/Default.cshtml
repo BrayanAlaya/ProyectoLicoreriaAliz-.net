@@ -1,0 +1,9 @@
+@model ProyectoLicoreriaAliz.ViewModels.ModalConfirmacionViewModel
+
+<div class="modal">
+    <h2>@Model.ModalTitle</h2>
+    <form asp-action="@Model.FormAction" asp-controller="@Model.FormController">
+        <!-- Contenido del formulario -->
+        <button type="submit">Confirmar</button>
+    </form>
+</div>

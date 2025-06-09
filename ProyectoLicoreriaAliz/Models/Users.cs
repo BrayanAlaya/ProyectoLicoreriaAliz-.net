@@ -35,9 +35,10 @@ namespace ProyectoLicoreriaAliz.Models
         [Required]
         public DateTime birthdate { get; set; }
 
-        [Required]
-        [ForeignKey("role_id")]
-        public Role Role { get; set; }
+
+        [ForeignKey("roleId")]
+        public int roleId { get; set; }
+        public virtual Role Role { get; set; }
 
     }
 }

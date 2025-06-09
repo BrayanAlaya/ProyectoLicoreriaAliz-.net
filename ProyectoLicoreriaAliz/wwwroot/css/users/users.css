@@ -1,0 +1,5 @@
+﻿body {
+}
+.users-table-container{
+    height: calc(100% - 82px - 1rem)
+}

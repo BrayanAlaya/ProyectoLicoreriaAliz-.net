@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoLicoreriaAliz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9589efeffcef7c5a53139e8648805a6f271bb06d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectoLicoreriaAliz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectoLicoreriaAliz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

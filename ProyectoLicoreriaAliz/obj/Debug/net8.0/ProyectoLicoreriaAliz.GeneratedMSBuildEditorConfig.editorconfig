@@ -40,8 +40,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Shared/_LayoutPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Users/Components/ModalConfirmacion/ModalConfirmacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ29tcG9uZW50c1xNb2RhbENvbmZpcm1hY2lvblxNb2RhbENvbmZpcm1hY2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Users/Components/UserModal/UserModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ29tcG9uZW50c1xVc2VyTW9kYWxcVXNlck1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Users/Components/UserUpdateModal/UserUpdateModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ29tcG9uZW50c1xVc2VyVXBkYXRlTW9kYWxcVXNlclVwZGF0ZU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Users/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Users/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/_ViewImports.cshtml]
@@ -51,19 +79,3 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-36am04ef8i
-
-[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Shared/_LayoutPanelAdmin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQYW5lbEFkbWluLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = b-9wt5p9l9jb
-
-[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Shared/_LayoutPanelVendedor.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQYW5lbFZlbmRlZG9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = b-cnx715pj8v
-
-[C:/Users/braya/source/repos/ProyectoLicoreriaAliz/ProyectoLicoreriaAliz/Views/Users/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-cw25krtmxg

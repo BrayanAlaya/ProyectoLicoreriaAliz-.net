@@ -1,0 +1,82 @@
+@{
+	@model ProyectoLicoreriaAliz.ViewModel.UsersVM;
+	ViewData["id"] = Model.user.id;
+}
+
+<div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Crear Nuevo Usuario</h5>
+			</div>
+
+			<div class="modal-body">
+
+				<div class="mb-2">
+					@foreach (var error in Model.errors)
+					{
+						<p class="error">@error</p>
+					}
+				</div>
+
+				<form asp-action="SaveUser" method="post" id="userForm">
+					<fieldset>
+						<label>Nombres:</label>
+						<input type="text" placeholder="Ingrese su nombre" asp-for="@Model.user.name" name="user.name" required />
+					</fieldset>
+
+					<fieldset>
+						<label>Correo:</label>
+						<input type="text" placeholder="Ingrese su email" asp-for="@Model.user.email" name="user.email" required />
+					</fieldset>
+
+					<fieldset >
+						<label>Contraseña:</label>
+						<input type="text" placeholder="Ingrese su contraseña" asp-for="@Model.user.password" name="user.password" />
+					</fieldset>
+
+
+					<fieldset>
+						<label>Dirección:</label>
+						<input type="text" placeholder="Ingrese su dirección" asp-for="@Model.user.address" name="user.address" required />
+					</fieldset>
+					<div class="flex">
+
+						<fieldset class="flex-1">
+							<label>Celular:</label>
+							<input type="text" placeholder="Ingrese su celular" asp-for="@Model.user.phone" name="user.phone" required />
+						</fieldset>
+						<fieldset class="flex-1">
+							<label>Dni:</label>
+							<input type="text" placeholder="Ingrese su dni" asp-for="@Model.user.dni" name="user.dni" required />
+						</fieldset>
+					</div>
+					<div class="flex">
+
+						<fieldset class="flex-1">
+							<label>Fecha de nacimiento:</label>
+							<input type="date" asp-for="@Model.user.birthdate" name="user.birthdate" required value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+						</fieldset>
+						<fieldset class="flex-1">
+							<label>Rol:</label>
+							<select type="select" placeholder="Ingrese su nombre" asp-for="user.roleId" name="user.roleId" required>
+								<option selected value="-1">-- Seleccionar --</option>
+
+								@foreach (var item in Model.roles)
+								{
+									<option value="@item.id">@item.name</option>
+								}
+
+							</select>
+						</fieldset>
+					</div>
+					<div class="flex justify-content-between">
+						<button type="button" class="btn-delete" data-bs-dismiss="modal">Cerrar</button>
+						<button type="submit" class="btn-create">Guardar</button>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

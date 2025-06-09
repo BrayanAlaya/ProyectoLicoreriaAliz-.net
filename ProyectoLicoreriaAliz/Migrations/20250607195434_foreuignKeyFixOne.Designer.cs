@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ProyectoLicoreriaAliz.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250601221620_db")]
-    partial class db
+    [Migration("20250607195434_foreuignKeyFixOne")]
+    partial class foreuignKeyFixOne
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,10 +65,16 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<int>("Entradas_productosid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Productoid")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("entrada_producto_id")
+                    b.Property<int>("entradaProductoId")
                         .HasColumnType("int");
 
                     b.Property<int>("product_id")
@@ -79,9 +85,9 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("entrada_producto_id");
+                    b.HasIndex("Entradas_productosid");
 
-                    b.HasIndex("product_id");
+                    b.HasIndex("Productoid");
 
                     b.ToTable("Detalle_Entradas");
                 });
@@ -100,14 +106,14 @@ namespace ProyectoLicoreriaAliz.Migrations
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("provider_id")
+                    b.Property<int>("providerId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
                     b.HasIndex("Productoid");
 
-                    b.HasIndex("provider_id");
+                    b.HasIndex("providerId");
 
                     b.ToTable("Entradas_Productos");
                 });
@@ -122,6 +128,9 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     b.Property<DateTime>("created_date")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("deleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -189,17 +198,17 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<int>("producto_id")
+                    b.Property<int>("productoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("provider_id")
+                    b.Property<int>("providerId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("producto_id");
+                    b.HasIndex("productoId");
 
-                    b.HasIndex("provider_id");
+                    b.HasIndex("providerId");
 
                     b.ToTable("Provider_Detalle_Producto");
                 });
@@ -212,7 +221,10 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<int>("client_id")
+                    b.Property<int>("Clientsid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("clientId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("date")
@@ -231,14 +243,14 @@ namespace ProyectoLicoreriaAliz.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("refund_id")
+                    b.Property<int>("refundId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("client_id");
+                    b.HasIndex("Clientsid");
 
-                    b.HasIndex("refund_id");
+                    b.HasIndex("refundId");
 
                     b.ToTable("Purchases");
                 });
@@ -251,6 +263,9 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<int>("Productoid")
+                        .HasColumnType("int");
+
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
 
@@ -259,17 +274,17 @@ namespace ProyectoLicoreriaAliz.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("product_id")
+                    b.Property<int>("productId")
                         .HasColumnType("int");
 
-                    b.Property<int>("purchase_id")
+                    b.Property<int>("purchaseId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("product_id");
+                    b.HasIndex("Productoid");
 
-                    b.HasIndex("purchase_id");
+                    b.HasIndex("purchaseId");
 
                     b.ToTable("Purchase_Detail");
                 });
@@ -354,12 +369,12 @@ namespace ProyectoLicoreriaAliz.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("role_id")
+                    b.Property<int>("roleId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("role_id");
+                    b.HasIndex("roleId");
 
                     b.ToTable("Users");
                 });
@@ -368,13 +383,13 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     b.HasOne("ProyectoLicoreriaAliz.Models.Entradas_productos", "Entradas_productos")
                         .WithMany("Detalle_entradas")
-                        .HasForeignKey("entrada_producto_id")
+                        .HasForeignKey("Entradas_productosid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProyectoLicoreriaAliz.Models.Producto", "Producto")
                         .WithMany("Detalle_Entradas")
-                        .HasForeignKey("product_id")
+                        .HasForeignKey("Productoid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -391,7 +406,7 @@ namespace ProyectoLicoreriaAliz.Migrations
 
                     b.HasOne("ProyectoLicoreriaAliz.Models.Provider", "Provider")
                         .WithMany("Entradas_productos")
-                        .HasForeignKey("provider_id")
+                        .HasForeignKey("providerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -402,13 +417,13 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     b.HasOne("ProyectoLicoreriaAliz.Models.Producto", "Producto")
                         .WithMany("Provider_detalle_producto")
-                        .HasForeignKey("producto_id")
+                        .HasForeignKey("productoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProyectoLicoreriaAliz.Models.Provider", "Provider")
                         .WithMany("Provider_detalle_producto")
-                        .HasForeignKey("provider_id")
+                        .HasForeignKey("providerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -421,13 +436,15 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     b.HasOne("ProyectoLicoreriaAliz.Models.Clients", "Clients")
                         .WithMany("Purchase")
-                        .HasForeignKey("client_id")
+                        .HasForeignKey("Clientsid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProyectoLicoreriaAliz.Models.Refund", "Refund")
                         .WithMany("Purchases")
-                        .HasForeignKey("refund_id");
+                        .HasForeignKey("refundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Clients");
 
@@ -438,13 +455,13 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     b.HasOne("ProyectoLicoreriaAliz.Models.Producto", "Producto")
                         .WithMany("Purchase_detail")
-                        .HasForeignKey("product_id")
+                        .HasForeignKey("Productoid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProyectoLicoreriaAliz.Models.Purchase", "Purchase")
                         .WithMany("Purchase_details")
-                        .HasForeignKey("purchase_id")
+                        .HasForeignKey("purchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -457,7 +474,7 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     b.HasOne("ProyectoLicoreriaAliz.Models.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("role_id")
+                        .HasForeignKey("roleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

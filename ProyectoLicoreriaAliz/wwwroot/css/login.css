@@ -1,4 +1,4 @@
-﻿.formLogin {
+.formLogin {
     padding: 2rem;
     background-color: var(--gray-10);
     border-radius: 8px;
@@ -25,10 +25,11 @@
 }
 
 .error {
-    padding: 0.5rem;
+    padding: 2px;
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 10px;
     background-color: var(--red-20);
-    border-left: solid 10px var(--red-80);
-    font-weight: bold;
+    border-left: solid 5px var(--red-80);
+    font-weight: normal;
+    font-size: 13px !important;
 }

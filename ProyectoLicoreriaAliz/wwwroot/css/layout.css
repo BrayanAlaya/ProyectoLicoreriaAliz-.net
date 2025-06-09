@@ -1,4 +1,4 @@
-﻿.header {
+.header {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -35,8 +35,9 @@
 }
 
 .container-main {
-    flex: 1;
-    padding: 40px;
+
+    height: calc(100% - 88px);
+    padding: 20px 40px;
     background-color: var(--gray-20);
 }
 
@@ -77,6 +78,7 @@ button {
     right: 0;
     overflow: hidden;
     height: 100%;
+    z-index: 999;
     background-color: var(--gray-10);
     transition: all 0.3s ease-in-out;
     box-shadow: 4px 0 6px 0 rgba(0,0,0,0.10);
@@ -108,11 +110,11 @@ button {
 }
 
 .menu-link {
-    text-decoration: none;
-    color: var(--gray-90);
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
+    text-decoration: none !important;
+    color: var(--gray-90) !important;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
 }
 
 .menu-icon {
@@ -150,6 +152,6 @@ button {
     text-align: center;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     padding: 0 !important;
 }

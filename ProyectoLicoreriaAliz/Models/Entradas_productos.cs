@@ -9,9 +9,9 @@ namespace ProyectoLicoreriaAliz.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Required]
-        [ForeignKey("provider_id")]
-        public Provider Provider { get; set; }
+        [ForeignKey("providerId")]
+        public int providerId { get; set; }
+        public virtual Provider Provider { get; set; }
 
         [Required]
         public DateTime date { get; set; } = DateTime.UtcNow;

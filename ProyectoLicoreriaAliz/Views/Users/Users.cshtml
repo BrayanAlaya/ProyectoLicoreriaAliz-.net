@@ -1,0 +1,165 @@
+﻿@{
+	ViewData["Title"] = "Usuarios";
+	Layout = "_LayoutPanel";
+	@model ProyectoLicoreriaAliz.ViewModel.UsersVM;
+}
+
+<div class="w-100 h-100 flex flex-column gap-3">
+
+	<div class="card">
+		<div class="flex gap-4 flex-space-between">
+
+			<h2>Usuarios</h2>
+
+			<div class="vr"></div>
+
+			<form asp-controller="Users" asp-action="Users" method="get" class="flex flex-grow-1 align-center">
+				<p>Buscar:</p>
+				<input type="hidden" name="page" asp-for="pageNumber" value="@(Model.pageNumber)" />
+				<input type="text" asp-for="searchEmail" placeholder="Correo" name="email" value="@(Model.searchEmail ?? "")" />
+				<input type="text" asp-for="searchName" placeholder="Nombre" name="name" value="@(Model.searchName ?? "")" />
+				<button class="btn-default">Filtrar</button>
+			</form>
+
+			<div class="vr"></div>
+			<button class="btn-create" type="button" data-bs-toggle="modal" data-bs-target="#userModal">
+				Crear Nuevo Usuario
+			</button>
+		</div>
+	</div>
+	<div class="card users-table-container w-100 h-100">
+		<div class="w-100 overflow-auto position-relative" style="height: calc(100% - 38px)">
+			<table>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th class="text-start w-100">Correo</th>
+						<th>Celular</th>
+						<th>DNI</th>
+						<th class="text-nowrap">Fecha de nacimiento</t>
+						<th>Rol</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					@foreach (var item in Model.users)
+					{
+						<tr>
+							<td class="text-nowrap">@item.name</td>
+							<td class="text-start">@item.email</td>
+							<td>@item.phone</td>
+							<td>@item.dni</td>
+							<td class="text-nowrap">@(item.birthdate is DateTime date ? date.ToString("yyyy-MM-dd") : "")</td>
+							<td>@item.Role.name</td>
+							<td>
+								<div class="flex">
+									<button class="btn-edit" type="button"
+											data-bs-toggle="modal"
+											data-bs-target="#UserUpdateModal"
+											data-user-id="@item.id"
+											data-user-name="@item.name"
+											data-user-email="@item.email"
+											data-user-phone="@item.phone"
+											data-user-address="@item.address"
+											data-user-dni="@item.dni"
+											data-user-birthdate="@(item.birthdate is DateTime dt ? dt.ToString("yyyy-MM-dd") : "")"
+											data-user-role="@item.Role.id">
+										Editar
+									</button>
+
+									<button class="btn-delete" type="submit" data-bs-toggle="modal" data-bs-id="@item.id" data-bs-target="#modalConfirmacion" data-title="Eliminar Usuario">
+										Eliminar
+									</button>
+								</div>
+							</td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</div>
+
+		@if (Model.totalCount > (Model.pageSize * Model.pageNumber))
+		{
+			<form class="" method="get" asp-controller="Users" asp-action="Users">
+				<input type="hidden" name="page" asp-for="pageNumber" value="@(Model.pageNumber + 1)" />
+				@if (Model.searchName != "")
+				{
+					<input type="hidden" asp-for="searchName" name="email" value="@(Model.searchName ?? "")" />
+				}
+				@if (Model.searchEmail != "")
+				{
+					<input type="hidden" asp-for="searchEmail" name="name" value="@(Model.searchEmail ?? "")" />
+				}
+				<button class="btn-wh-bg " type="submit">
+					Mostrar Más
+				</button>
+			</form>
+		}
+
+	</div>
+
+</div>
+
+@await Component.InvokeAsync("UserModal")
+@await Component.InvokeAsync("UserUpdateModal")
+@await Component.InvokeAsync("ModalConfirmacion", Model.confirmationModal)
+
+@section Scripts {
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const modal = document.getElementById('userModal');
+			const updateModal = document.getElementById('UserUpdateModal');
+			const deleteModal = document.getElementById('modalConfirmacion');
+
+			document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#UserUpdateModal"]').forEach(btn => {
+				btn.addEventListener('click', function () {
+
+					// Llenar los campos del formulario con los datos del usuario
+					updateModal.querySelector('[name="user.id"]').value = btn.getAttribute('data-user-id');
+					updateModal.querySelector('[name="user.name"]').value = btn.getAttribute('data-user-name');
+					updateModal.querySelector('[name="user.email"]').value = btn.getAttribute('data-user-email');
+					updateModal.querySelector('[name="user.phone"]').value = btn.getAttribute('data-user-phone');
+					updateModal.querySelector('[name="user.address"]').value = btn.getAttribute('data-user-address');
+					updateModal.querySelector('[name="user.dni"]').value = btn.getAttribute('data-user-dni');
+					updateModal.querySelector('[name="user.birthdate"]').value = btn.getAttribute('data-user-birthdate');
+					updateModal.querySelector('[name="user.roleId"]').value = btn.getAttribute('data-user-role');
+
+
+				});
+			});
+
+			document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#userModal"]').forEach(btn => {
+				btn.addEventListener('click', function () {
+					// Limpiar el formulario si es para crear
+					modal.querySelectorAll('input, select').forEach(input => input.value = '');
+
+				});
+			});
+
+			document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#modalConfirmacion"]').forEach(btn => {
+				btn.addEventListener('click', function () {
+					console.log(btn.getAttribute('data-bs-id'))
+					// Limpiar el formulario si es para crear
+					deleteModal.querySelector('#id').value = btn.getAttribute('data-bs-id');
+
+				});
+			});
+
+			// Verifica si el backend indicó que debe abrirse el modal
+			var showModal = @(Model.errors.Count > 0 ? "true" : "false");
+			if (showModal && modal) {
+				var bsModal = new bootstrap.Modal(modal);
+				bsModal.show();
+			}
+
+			// Verifica si el backend indicó que debe abrirse el modal
+			var showUpdateModal = @(Model.updateErrors.Count > 0 ? "true" : "false");
+			if (showUpdateModal && updateModal) {
+				var bsModal = new bootstrap.Modal(updateModal);
+				bsModal.show();
+			}
+		});
+	</script>
+}

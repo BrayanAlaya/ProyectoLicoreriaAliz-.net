@@ -1,0 +1,23 @@
+@{
+	@model ProyectoLicoreriaAliz.ViewModel.ConfirmationModalVM;
+}
+
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+
+				<form asp-controller="@Model.FormController" asp-action="@Model.FormAction">
+					<input type="hidden" asp-for="@Model.Id" name="id" id="id" value="@Model.Id" />
+					<div class="flex align-center justify-content-between">
+						<h4 class="m-0">@Model.ModalTitle</h4>
+						<div class="flex align-center">
+							<button type="button" class="btn-delete" data-bs-dismiss="modal">Cerrar</button>
+							<button type="submit" class="btn-create" data-bs-dismiss="modal">Confirmar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -16,9 +16,7 @@ C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debu
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\ProyectoLicoreriaAliz.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\ProyectoLicoreriaAliz.RazorAssemblyInfo.cache
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\ProyectoLicoreriaAliz.RazorAssemblyInfo.cs
-C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\scopedcss\bundle\ProyectoLicoreriaAliz.styles.css
-C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\scopedcss\projectbundle\ProyectoLicoreriaAliz.bundle.scp.css
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\staticwebassets.build.endpoints.json
@@ -167,6 +165,4 @@ C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\bin\Debu
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\ProyectoLicoreriaAliz.csproj.AssemblyReference.cache
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\Proyecto.54D834CF.Up2Date
 C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\staticwebassets.build.json.cache
-C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\scopedcss\Views\Users\Login.cshtml.rz.scp.css
-C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutPanelAdmin.cshtml.rz.scp.css
-C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutPanelVendedor.cshtml.rz.scp.css
+C:\Users\braya\source\repos\ProyectoLicoreriaAliz\ProyectoLicoreriaAliz\obj\Debug\net8.0\ProyectoLicoreriaAliz.sourcelink.json

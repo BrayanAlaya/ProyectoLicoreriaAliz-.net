@@ -19,12 +19,15 @@ namespace ProyectoLicoreriaAliz.Models
         public decimal monto { get; set; }
         [Required]
         public DateTime date { get; set; } = DateTime.UtcNow;
-        [Required]
-        [ForeignKey("client_id")]
-        public Clients Clients { get; set; }
 
-        [ForeignKey("refund_id")]
-        public Refund? Refund { get; set; }
+        [ForeignKey("clientId")]
+        public int clientId { get; set; }
+        public virtual Clients Clients { get; set; }
+
+
+        [ForeignKey("refundId")]
+        public int refundId { get; set; }
+        public virtual Refund? Refund { get; set; }
 
         public ICollection<Purchase_detail> Purchase_details { get; set; } 
     }

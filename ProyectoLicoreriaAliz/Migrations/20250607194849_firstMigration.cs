@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProyectoLicoreriaAliz.Migrations
 {
     /// <inheritdoc />
-    public partial class db : Migration
+    public partial class firstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,6 +39,7 @@ namespace ProyectoLicoreriaAliz.Migrations
                     description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     stock = table.Column<int>(type: "int", nullable: false),
                     image = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    deleted = table.Column<bool>(type: "bit", nullable: false),
                     created_date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     state = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -96,6 +97,7 @@ namespace ProyectoLicoreriaAliz.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     provider_id = table.Column<int>(type: "int", nullable: false),
+                    Providerid = table.Column<int>(type: "int", nullable: false),
                     date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Productoid = table.Column<int>(type: "int", nullable: true)
                 },
@@ -108,8 +110,8 @@ namespace ProyectoLicoreriaAliz.Migrations
                         principalTable: "Productos",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_Entradas_Productos_Providers_provider_id",
-                        column: x => x.provider_id,
+                        name: "FK_Entradas_Productos_Providers_Providerid",
+                        column: x => x.Providerid,
                         principalTable: "Providers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -122,20 +124,22 @@ namespace ProyectoLicoreriaAliz.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     provider_id = table.Column<int>(type: "int", nullable: false),
-                    producto_id = table.Column<int>(type: "int", nullable: false)
+                    Providerid = table.Column<int>(type: "int", nullable: false),
+                    producto_id = table.Column<int>(type: "int", nullable: false),
+                    Productoid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Provider_Detalle_Producto", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Provider_Detalle_Producto_Productos_producto_id",
-                        column: x => x.producto_id,
+                        name: "FK_Provider_Detalle_Producto_Productos_Productoid",
+                        column: x => x.Productoid,
                         principalTable: "Productos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Provider_Detalle_Producto_Providers_provider_id",
-                        column: x => x.provider_id,
+                        name: "FK_Provider_Detalle_Producto_Providers_Providerid",
+                        column: x => x.Providerid,
                         principalTable: "Providers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -152,20 +156,22 @@ namespace ProyectoLicoreriaAliz.Migrations
                     monto = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     client_id = table.Column<int>(type: "int", nullable: false),
-                    refund_id = table.Column<int>(type: "int", nullable: true)
+                    Clientsid = table.Column<int>(type: "int", nullable: false),
+                    refund_id = table.Column<int>(type: "int", nullable: false),
+                    Refundid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Purchases", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Purchases_Clients_client_id",
-                        column: x => x.client_id,
+                        name: "FK_Purchases_Clients_Clientsid",
+                        column: x => x.Clientsid,
                         principalTable: "Clients",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Purchases_Refunds_refund_id",
-                        column: x => x.refund_id,
+                        name: "FK_Purchases_Refunds_Refundid",
+                        column: x => x.Refundid,
                         principalTable: "Refunds",
                         principalColumn: "id");
                 });
@@ -183,14 +189,15 @@ namespace ProyectoLicoreriaAliz.Migrations
                     password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    role_id = table.Column<int>(type: "int", nullable: false)
+                    role_id = table.Column<int>(type: "int", nullable: false),
+                    Roleid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Users_Role_role_id",
-                        column: x => x.role_id,
+                        name: "FK_Users_Role_Roleid",
+                        column: x => x.Roleid,
                         principalTable: "Role",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -203,7 +210,9 @@ namespace ProyectoLicoreriaAliz.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     entrada_producto_id = table.Column<int>(type: "int", nullable: false),
+                    Entradas_productosid = table.Column<int>(type: "int", nullable: false),
                     product_id = table.Column<int>(type: "int", nullable: false),
+                    Productoid = table.Column<int>(type: "int", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -211,14 +220,14 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     table.PrimaryKey("PK_Detalle_Entradas", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Detalle_Entradas_Entradas_Productos_entrada_producto_id",
-                        column: x => x.entrada_producto_id,
+                        name: "FK_Detalle_Entradas_Entradas_Productos_Entradas_productosid",
+                        column: x => x.Entradas_productosid,
                         principalTable: "Entradas_Productos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Detalle_Entradas_Productos_product_id",
-                        column: x => x.product_id,
+                        name: "FK_Detalle_Entradas_Productos_Productoid",
+                        column: x => x.Productoid,
                         principalTable: "Productos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -231,7 +240,9 @@ namespace ProyectoLicoreriaAliz.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     purchase_id = table.Column<int>(type: "int", nullable: false),
+                    Purchaseid = table.Column<int>(type: "int", nullable: false),
                     product_id = table.Column<int>(type: "int", nullable: false),
+                    Productoid = table.Column<int>(type: "int", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
                 },
@@ -239,28 +250,28 @@ namespace ProyectoLicoreriaAliz.Migrations
                 {
                     table.PrimaryKey("PK_Purchase_Detail", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Purchase_Detail_Productos_product_id",
-                        column: x => x.product_id,
+                        name: "FK_Purchase_Detail_Productos_Productoid",
+                        column: x => x.Productoid,
                         principalTable: "Productos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Purchase_Detail_Purchases_purchase_id",
-                        column: x => x.purchase_id,
+                        name: "FK_Purchase_Detail_Purchases_Purchaseid",
+                        column: x => x.Purchaseid,
                         principalTable: "Purchases",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Detalle_Entradas_entrada_producto_id",
+                name: "IX_Detalle_Entradas_Entradas_productosid",
                 table: "Detalle_Entradas",
-                column: "entrada_producto_id");
+                column: "Entradas_productosid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Detalle_Entradas_product_id",
+                name: "IX_Detalle_Entradas_Productoid",
                 table: "Detalle_Entradas",
-                column: "product_id");
+                column: "Productoid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Entradas_Productos_Productoid",
@@ -268,44 +279,44 @@ namespace ProyectoLicoreriaAliz.Migrations
                 column: "Productoid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Entradas_Productos_provider_id",
+                name: "IX_Entradas_Productos_Providerid",
                 table: "Entradas_Productos",
-                column: "provider_id");
+                column: "Providerid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Provider_Detalle_Producto_producto_id",
+                name: "IX_Provider_Detalle_Producto_Productoid",
                 table: "Provider_Detalle_Producto",
-                column: "producto_id");
+                column: "Productoid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Provider_Detalle_Producto_provider_id",
+                name: "IX_Provider_Detalle_Producto_Providerid",
                 table: "Provider_Detalle_Producto",
-                column: "provider_id");
+                column: "Providerid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchase_Detail_product_id",
+                name: "IX_Purchase_Detail_Productoid",
                 table: "Purchase_Detail",
-                column: "product_id");
+                column: "Productoid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchase_Detail_purchase_id",
+                name: "IX_Purchase_Detail_Purchaseid",
                 table: "Purchase_Detail",
-                column: "purchase_id");
+                column: "Purchaseid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchases_client_id",
+                name: "IX_Purchases_Clientsid",
                 table: "Purchases",
-                column: "client_id");
+                column: "Clientsid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchases_refund_id",
+                name: "IX_Purchases_Refundid",
                 table: "Purchases",
-                column: "refund_id");
+                column: "Refundid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_role_id",
+                name: "IX_Users_Roleid",
                 table: "Users",
-                column: "role_id");
+                column: "Roleid");
         }
 
         /// <inheritdoc />

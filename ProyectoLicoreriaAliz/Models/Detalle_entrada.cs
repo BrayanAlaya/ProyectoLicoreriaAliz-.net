@@ -10,13 +10,13 @@ namespace ProyectoLicoreriaAliz.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Required]
-        [ForeignKey("entrada_producto_id")]
-        public Entradas_productos Entradas_productos { get; set; }
+        [ForeignKey("entradaProductoId")]
+        public int entradaProductoId { get; set; }
+        public virtual Entradas_productos Entradas_productos { get; set; }
 
-        [Required]
         [ForeignKey("product_id")]
-        public Producto Producto { get; set; }
+        public int product_id { get; set; }
+        public virtual Producto Producto { get; set; }
 
         [Required]
         public int quantity { get; set; }

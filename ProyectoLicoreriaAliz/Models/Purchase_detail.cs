@@ -8,12 +8,18 @@ namespace ProyectoLicoreriaAliz.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        [Required]
-        [ForeignKey("purchase_id")]
-        public Purchase Purchase { get; set; }
-        [Required]
-        [ForeignKey("product_id")]
-        public Producto Producto { get; set; }
+
+
+        [ForeignKey("purchaseId")]
+        public int purchaseId { get; set; }
+        public virtual Purchase Purchase { get; set; }
+
+
+        [ForeignKey("productId")]
+        public int productId { get; set; }
+        public virtual Producto Producto { get; set; }
+
+
         [Required]
         public int cantidad { get; set; }
         [StringLength(500)]
